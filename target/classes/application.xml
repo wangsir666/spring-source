@@ -34,6 +34,4 @@
             <aop:after method="recordAfter" pointcut-ref="aroundMethod" />
         </aop:aspect>
     </aop:config>
-
-    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 </beans>

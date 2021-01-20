@@ -1,6 +1,7 @@
 package com.demo.extention;
 
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.ResourceEntityResolver;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
@@ -21,7 +22,7 @@ public class MyClassPathXmlApplicationContext extends ClassPathXmlApplicationCon
 
     @Override
     protected void initPropertySources() {
-        System.out.println("asdfasd");
+//        System.out.println("asdfasd");
         //添加必须的属性aaaa，
         // 在AbstractApplicationContext.prepareRefresh中会校验
         // 校验必须的属性值----getEnvironment().validateRequiredProperties();
@@ -33,6 +34,8 @@ public class MyClassPathXmlApplicationContext extends ClassPathXmlApplicationCon
     protected void customizeBeanFactory(DefaultListableBeanFactory beanFactory) {
 //        super.setAllowBeanDefinitionOverriding(false);
 //        super.setAllowCircularReferences(false);
+//        super.addBeanFactoryPostProcessor(new MyBeanFactoryPostProcessor());
+//        super.addBeanFactoryPostProcessor(new MyBeanDefinitionRegistryPostProcessor());
         super.customizeBeanFactory(beanFactory);
     }
 
@@ -51,5 +54,11 @@ public class MyClassPathXmlApplicationContext extends ClassPathXmlApplicationCon
         // then proceed with actually loading the bean definitions.
         initBeanDefinitionReader(beanDefinitionReader);
         loadBeanDefinitions(beanDefinitionReader);
+    }
+
+
+    @Override
+    public void addBeanFactoryPostProcessor(BeanFactoryPostProcessor postProcessor) {
+        super.addBeanFactoryPostProcessor(postProcessor);
     }
 }

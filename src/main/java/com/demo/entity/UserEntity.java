@@ -13,29 +13,8 @@ import org.springframework.context.ApplicationContextAware;
  * @Description:
  */
 @Data
-public class UserEntity implements ApplicationContextAware, BeanNameAware {
+public class UserEntity {
 
     private String name;
 
-    private String beanName;
-
-    private ApplicationContext applicationContext;
-
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext = applicationContext;
-    }
-
-    public ApplicationContext getApplicationContext() {
-        return applicationContext;
-    }
-
-    @Override
-    public void setBeanName(String beanName) {
-        this.beanName=beanName;
-    }
-
-    public String getBeanNameName() {
-        return beanName;
-    }
 }
